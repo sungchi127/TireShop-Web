@@ -4,8 +4,8 @@
 
 ## 專案結構
 
-- \`/frontend\`: Next.js 前端應用程式
-- \`/backend\`: Node.js/Express.js 後端應用程式
+- Frontend: Next.js 前端應用程式
+- Backend: Node.js/Express.js 後端應用程式
 
 ## TODO
 - [✅] 完成前端 `package.json` 並安裝依賴
