@@ -1,0 +1,92 @@
+.container {
+  padding: 2rem;
+  max-width: 1200px; /* Allow wider content for articles */
+  margin: 0 auto;
+}
+
+.pageTitle {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 2.8rem;
+}
+
+.pageSubtitle {
+  color: #e0e0e0;
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+}
+
+.articlesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Responsive grid for articles */
+  gap: 2rem;
+}
+
+.articleCard {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden; /* To contain image if added */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.articleCard:hover {
+  transform: translateY(-5px);
+}
+
+/* Placeholder for image - if you add images, style its container and the Next/Image component */
+/* .articleImagePlaceholder {
+  width: 100%;
+  height: 180px;
+  background-color: #2a2a2a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #777;
+} */
+
+.articleContent {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Make content area grow to fill card */
+}
+
+.articleTitle {
+  color: #ee8787; /* Red title */
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.articleSummary {
+  color: #cccccc;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  flex-grow: 1; /* Allow summary to take up available space */
+}
+
+.readMoreLink {
+  color: #ffffff;
+  background-color: #ff3333;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+  align-self: flex-start; /* Align button to the start */
+  margin-top: auto; /* Push to bottom if card heights vary */
+}
+
+.readMoreLink:hover {
+  background-color: #cc0000;
+  color: #fff;
+} 
