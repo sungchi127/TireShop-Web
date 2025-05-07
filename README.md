@@ -1,11 +1,11 @@
-# 廣翊輪胎行 - 輪胎訂購網站
+# 輪胎行 - 輪胎訂購網站
 
 這是一個使用 Next.js (React) 作為前端，Node.js (Express.js) 作為後端的輪胎行網站專案。
-
+連結: https://tire-shop-web.vercel.app/
 ## 專案結構
 
-- \`/frontend\`: Next.js 前端應用程式
-- \`/backend\`: Node.js/Express.js 後端應用程式
+- Frontend: Next.js 前端應用程式
+- Backend: Node.js/Express.js 後端應用程式
 
 ## TODO
 - [✅] 完成前端 `package.json` 並安裝依賴
