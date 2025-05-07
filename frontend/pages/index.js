@@ -6,13 +6,13 @@ export default function Home() {
   return (
     <div className={styles.heroContainer}>
       <Head>
-        <title>廣翊輪胎行 - 專業輪胎與維修服務</title>
+        <title>廣翊輪胎館 - 專業輪胎與維修服務</title>
         <meta name="description" content="廣翊輪胎行提供專業的普利司通輪胎訂購、安裝及全面的汽車維修保養服務。" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.heroContent}>
-        <h1 className={styles.heroTitle}>廣翊輪胎行</h1>
+        <h1 className={styles.heroTitle}>廣翊輪胎館</h1>
         <p className={styles.heroSubtitle}>
           您的專業輪胎夥伴，提供普利司通輪胎及全方位汽車保養維修服務
         </p>

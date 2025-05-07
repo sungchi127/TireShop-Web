@@ -5,7 +5,7 @@ const FindTiresPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>尋找輪胎 - 廣翊輪胎行</title>
+        <title>尋找輪胎 - 廣翊輪胎館</title>
         <meta name="description" content="依車輛、輪胎規格或品牌搜尋普利司通輪胎" />
       </Head>
 

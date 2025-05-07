@@ -26,7 +26,7 @@ const RepairServicesPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>維修價目表 - 廣翊輪胎行</title>
+        <title>維修價目表 - 廣翊輪胎館</title>
         <meta name="description" content="廣翊輪胎行維修服務項目與價格表" />
       </Head>
 

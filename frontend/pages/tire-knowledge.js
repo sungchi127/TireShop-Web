@@ -45,7 +45,7 @@ const TireKnowledgePage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>輪胎知識 - 廣翊輪胎行</title>
+        <title>輪胎知識 - 廣翊輪胎館</title>
         <meta name="description" content="學習關於輪胎安全、保養、選擇等實用知識，成為更聰明的用路人。" />
       </Head>
 

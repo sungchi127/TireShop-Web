@@ -1,13 +1,61 @@
 import Navbar from './Navbar';
 import styles from '../styles/Layout.module.css'; // 我們稍後會建立這個 CSS Module
+import { useState, useEffect } from 'react'; // Import useState and useEffect
 
 const Layout = ({ children }) => {
+  // 修改 visitorCounts 狀態以儲存多個計數
+  const [visitorCounts, setVisitorCounts] = useState({
+    total: null,
+    today: null,
+    month: null
+  });
+
+  useEffect(() => {
+    // Function to fetch visit count
+    const fetchVisitCount = async () => {
+      try {
+        // Ensure this only runs on the client side
+        if (typeof window !== 'undefined') {
+          // We assume your backend is running on port 3001
+          const response = await fetch('http://localhost:3001/api/visits/count');
+          if (response.ok) {
+            const data = await response.json();
+            // 更新狀態以匹配 API 回應的結構
+            setVisitorCounts({
+              total: data.totalCount,
+              today: data.todayCount,
+              month: data.thisMonthCount
+            });
+          } else {
+            console.error('Failed to fetch visit count in Layout.js:', response.status);
+            setVisitorCounts({ total: 'N/A', today: 'N/A', month: 'N/A' });
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching visit count in Layout.js:', error);
+        setVisitorCounts({ total: 'N/A', today: 'N/A', month: 'N/A' });
+      }
+    };
+
+    fetchVisitCount(); // Fetch count when component mounts
+
+    // Optional: Set up an interval to refresh the count periodically if desired
+    // const intervalId = setInterval(fetchVisitCount, 60000); // e.g., every 60 seconds
+    // return () => clearInterval(intervalId); // Cleanup interval on component unmount
+
+  }, []); // Empty dependency array ensures this runs once when the component mounts
+
   return (
     <>
       <Navbar />
       <main className={styles.mainContent}>{children}</main>
       <footer className={styles.footer}>
-        <p>廣翊輪胎行 &copy; 2025</p>
+        <p>
+          廣翊輪胎館 &copy; 2025 -
+          本日訪客: {visitorCounts.today !== null ? visitorCounts.today : 'Loading...'} | 
+          本月訪客: {visitorCounts.month !== null ? visitorCounts.month : 'Loading...'} | 
+          訪客總數: {visitorCounts.total !== null ? visitorCounts.total : 'Loading...'}
+        </p>
       </footer>
     </>
   );

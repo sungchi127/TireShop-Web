@@ -1,0 +1,267 @@
+import Head from 'next/head';
+import { useState } from 'react';
+import styles from '../styles/TireOrder.module.css';
+import Link from 'next/link';
+
+const TireOrderPage = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    tireBrandSeries: '',
+    tireSpecs: '',
+    quantity: 1,
+    carMake: '',
+    carModel: '',
+    carYear: '',
+    needsInstallation: 'no', // 'yes' or 'no'
+    appointmentDate: '',
+    appointmentTime: '', // Will store the start time string
+    notes: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false); // For loading state
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
+  const [submitMessage, setSubmitMessage] = useState('');
+
+  // Available start times - you can customize these
+  const availableTimes = [
+    "08:30",
+    "09:00",
+    "09:30",
+    "10:00",
+    "10:30",
+    "11:00",
+    "13:30",
+    "14:00",
+    "14:30",
+    "15:00",
+    "15:30",
+    "16:00",
+    "16:30",
+    "17:00",
+    "17:30",
+    "18:00",
+  ];
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: type === 'checkbox' ? (checked ? 'yes' : 'no') : value // Adjusted for radio/checkbox if needed, here for text/select
+    }));
+  };
+  
+  // Special handler for radio buttons for needsInstallation
+  const handleInstallationChange = (e) => {
+    setFormData(prevData => ({
+      ...prevData,
+      needsInstallation: e.target.value,
+      // Reset date and time if installation is not needed
+      appointmentDate: e.target.value === 'no' ? '' : prevData.appointmentDate,
+      appointmentTime: e.target.value === 'no' ? '' : prevData.appointmentTime,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    setSubmitMessage('');
+
+    // Basic validation for appointmentDate if installation is needed
+    if (formData.needsInstallation === 'yes' && !formData.appointmentDate) {
+        setSubmitStatus('error');
+        setSubmitMessage('如果您需要安裝服務，請選擇期望的預約安裝日期。');
+        setIsSubmitting(false);
+        return;
+    }
+    if (formData.needsInstallation === 'yes' && !formData.appointmentTime) {
+        setSubmitStatus('error');
+        setSubmitMessage('如果您需要安裝服務，請選擇期望的預約安裝時段。');
+        setIsSubmitting(false);
+        return;
+    }
+
+    // Clean up appointmentDate if installation is not needed
+    const payload = {
+        ...formData,
+        appointmentDate: formData.needsInstallation === 'yes' ? formData.appointmentDate : null,
+        appointmentTime: formData.needsInstallation === 'yes' ? formData.appointmentTime : null,
+    };
+    
+    // Ensure quantity is a number
+    payload.quantity = Number(payload.quantity);
+
+    try {
+      const response = await fetch('http://localhost:3001/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setSubmitMessage(result.message || '訂單請求已成功提交！我們將盡快與您聯繫。');
+        // Reset form
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          tireBrandSeries: '',
+          tireSpecs: '',
+          quantity: 1,
+          carMake: '',
+          carModel: '',
+          carYear: '',
+          needsInstallation: 'no',
+          appointmentDate: '',
+          appointmentTime: '',
+          notes: ''
+        });
+      } else {
+        setSubmitStatus('error');
+        setSubmitMessage(result.message || '提交訂單時發生錯誤，請稍後再試或直接與我們聯繫。');
+        if (result.errors) {
+          console.error('Validation errors:', result.errors);
+          // You could display these errors more specifically if desired
+          setSubmitMessage(`提交失敗：${result.errors.join(', ')}`)
+        }
+      }
+    } catch (error) {
+      console.error('Error submitting order:', error);
+      setSubmitStatus('error');
+      setSubmitMessage('提交訂單時發生網路錯誤，請檢查您的網路連線或稍後再試。');
+    }
+    setIsSubmitting(false);
+  };
+
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title>輪胎訂購 - 廣翊輪胎館</title>
+        <meta name="description" content="填寫表單預訂您需要的輪胎，我們將有專人與您聯繫確認。" />
+      </Head>
+
+      <h1 className={styles.pageTitle}>輪胎訂購表單</h1>
+      <p className={styles.pageSubtitle}>請填寫以下資訊，我們收到後會盡快與您聯繫確認訂單詳情與後續事宜。</p>
+
+      <form onSubmit={handleSubmit} className={styles.orderForm}>
+        <fieldset className={styles.fieldset}>
+          <legend className={styles.legend}>客戶基本資料</legend>
+          <div className={styles.formGroup}>
+            <label htmlFor="name" className={styles.label}>姓名 <span className={styles.required}>*</span></label>
+            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className={styles.input} required disabled={isSubmitting} />
+          </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="phone" className={styles.label}>聯絡電話 <span className={styles.required}>*</span></label>
+            <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} className={styles.input} required disabled={isSubmitting} />
+          </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="email" className={styles.label}>電子郵件</label>
+            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className={styles.input} disabled={isSubmitting} />
+          </div>
+        </fieldset>
+
+        <fieldset className={styles.fieldset}>
+          <legend className={styles.legend}>輪胎訂購資訊</legend>
+          <div className={styles.formGroup}>
+            <label htmlFor="tireBrandSeries" className={styles.label}>輪胎品牌/系列</label>
+            <input type="text" id="tireBrandSeries" name="tireBrandSeries" value={formData.tireBrandSeries} onChange={handleChange} className={styles.input} placeholder="例如：普利司通 Potenza S007A" disabled={isSubmitting} />
+          </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="tireSpecs" className={styles.label}>輪胎規格</label>
+            <input type="text" id="tireSpecs" name="tireSpecs" value={formData.tireSpecs} onChange={handleChange} className={styles.input} placeholder="例如：225/45R18 (若不確定可留空)" disabled={isSubmitting} />
+          </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="quantity" className={styles.label}>數量 <span className={styles.required}>*</span></label>
+            <input type="number" id="quantity" name="quantity" value={formData.quantity} onChange={handleChange} className={styles.input} min="1" required disabled={isSubmitting} />
+          </div>
+        </fieldset>
+
+        <fieldset className={styles.fieldset}>
+          <legend className={styles.legend}>車輛資訊</legend>
+          <div className={styles.formGroup}>
+            <label htmlFor="carMake" className={styles.label}>車輛廠牌<span className={styles.required}>*</span></label>
+            <input type="text" id="carMake" name="carMake" value={formData.carMake} onChange={handleChange} className={styles.input} placeholder="例如：Toyota" disabled={isSubmitting} required />
+          </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="carModel" className={styles.label}>車輛型號<span className={styles.required}>*</span></label>
+            <input type="text" id="carModel" name="carModel" value={formData.carModel} onChange={handleChange} className={styles.input} placeholder="例如：Corolla Altis" disabled={isSubmitting} required />
+          </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="carYear" className={styles.label}>車輛年份</label>
+            <input type="text" id="carYear" name="carYear" value={formData.carYear} onChange={handleChange} className={styles.input} placeholder="例如：2020" disabled={isSubmitting} />
+          </div>
+        </fieldset>
+
+        <fieldset className={styles.fieldset}>
+          <legend className={styles.legend}>安裝服務</legend>
+          <div className={styles.formGroup}>
+            <p className={styles.label}>是否需要安裝服務？</p>
+            <div className={styles.radioGroup}>
+              <label className={styles.radioLabel}>
+                <input type="radio" name="needsInstallation" value="yes" checked={formData.needsInstallation === 'yes'} onChange={handleInstallationChange} disabled={isSubmitting} /> 是
+              </label>
+              <label className={styles.radioLabel}>
+                <input type="radio" name="needsInstallation" value="no" checked={formData.needsInstallation === 'no'} onChange={handleInstallationChange} disabled={isSubmitting} /> 否
+              </label>
+            </div>
+          </div>
+          {formData.needsInstallation === 'yes' && (
+            <>
+              <div className={styles.formGroup}>
+                <label htmlFor="appointmentDate" className={styles.label}>期望預約安裝日期</label>
+                <input type="date" id="appointmentDate" name="appointmentDate" value={formData.appointmentDate} onChange={handleChange} className={styles.input} disabled={isSubmitting} />
+              </div>
+              <div className={styles.formGroup}>
+                <label htmlFor="appointmentTime" className={styles.label}>期望預約安裝開始時間</label>
+                <select 
+                  id="appointmentTime" 
+                  name="appointmentTime" 
+                  value={formData.appointmentTime} 
+                  onChange={handleChange} 
+                  className={styles.input} 
+                  disabled={isSubmitting}
+                >
+                  <option value="">請選擇開始時間</option>
+                  {availableTimes.map(time => (
+                    <option key={time} value={time}>{time}</option>
+                  ))}
+                </select>
+              </div>
+            </>
+          )}
+        </fieldset>
+        
+        <fieldset className={styles.fieldset}>
+          <legend className={styles.legend}>其他備註</legend>
+          <div className={styles.formGroup}>
+            <label htmlFor="notes" className={styles.label}>特殊需求或訊息</label>
+            <textarea id="notes" name="notes" value={formData.notes} onChange={handleChange} className={styles.textarea} rows="4" placeholder="例如：是否有現貨？大概多久可以調到貨？" disabled={isSubmitting}></textarea>
+          </div>
+        </fieldset>
+
+        {submitStatus && (
+          <div className={`${styles.submitMessage} ${submitStatus === 'success' ? styles.successMessage : styles.errorMessage}`}>
+            {submitMessage}
+          </div>
+        )}
+
+        <div className={styles.formActions}>
+          <button type="submit" className={styles.submitButton} disabled={isSubmitting}>
+            {isSubmitting ? '提交中...' : '提交訂購請求'}
+          </button>
+        </div>
+        <p className={styles.formFooterText}>
+          提交後，我們會盡快透過電話與您確認訂單詳情，包括最終價格、庫存狀態與付款方式。您也可以直接 <Link href="/about" className={styles.contactLink}>聯絡我們</Link>。
+        </p>
+      </form>
+    </div>
+  );
+};
+
+export default TireOrderPage; 

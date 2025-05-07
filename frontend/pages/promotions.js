@@ -32,7 +32,7 @@ const PromotionsPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>最新促銷 - 廣翊輪胎行</title>
+        <title>最新促銷 - 廣翊輪胎館</title>
         <meta name="description" content="查看廣翊輪胎行的最新輪胎促銷活動與優惠" />
       </Head>
 

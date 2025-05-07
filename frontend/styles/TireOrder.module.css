@@ -1,0 +1,159 @@
+.container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pageTitle {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+}
+
+.pageSubtitle {
+  color: #e0e0e0;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+}
+
+.orderForm {
+  background-color: #1e1e1e;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.fieldset {
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.legend {
+  color: #ff3333;
+  font-weight: bold;
+  font-size: 1.3rem;
+  padding: 0 0.5rem;
+  margin-left: 1rem; /* Align with input padding */
+}
+
+.formGroup {
+  margin-bottom: 1.2rem;
+}
+
+.label {
+  display: block;
+  color: #e0e0e0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.input,
+.textarea,
+.select { /* Assuming you might add select later */
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #555;
+  background-color: #2c2c2c;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  outline: none;
+  border-color: #ff3333;
+  box-shadow: 0 0 0 2px rgba(255, 51, 51, 0.3);
+}
+
+.required {
+  color: #ff3333;
+  margin-left: 0.25rem;
+}
+
+.radioGroup {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.radioLabel {
+  color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.radioLabel input[type="radio"] {
+  accent-color: #ff3333; /* Style the radio button itself */
+}
+
+
+.textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.formActions {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.submitButton {
+  background-color: #ff3333;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submitButton:hover {
+  background-color: #cc0000;
+}
+
+.formFooterText {
+  text-align: center;
+  color: #aaaaaa;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+.contactLink {
+  color: #ff3333;
+  text-decoration: underline;
+}
+
+.contactLink:hover {
+  color: #cc0000;
+}
+
+/* Styles for submission status messages */
+.submitMessage {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.successMessage {
+  background-color: #28a745; /* Green for success */
+  color: white;
+  border: 1px solid #1e7e34;
+}
+
+.errorMessage {
+  background-color: #dc3545; /* Red for error */
+  color: white;
+  border: 1px solid #b21f2d;
+} 
