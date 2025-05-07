@@ -1,0 +1,73 @@
+.container {
+  padding: 2rem;
+  text-align: center;
+}
+
+.hero {
+  background-color: #222; /* 深色背景 */
+  padding: 3rem 1rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+}
+
+.hero h1 {
+  color: #ff3333; /* 紅色標題 */
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+}
+
+.hero p {
+  color: #e0e0e0;
+  font-size: 1.2rem;
+}
+
+.searchOptions {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  justify-content: space-around;
+  gap: 2rem;
+}
+
+.searchOption {
+  background-color: #1e1e1e; /* 區塊背景色 */
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+  flex-basis: 45%; /* Two columns on larger screens */
+  min-width: 300px; /* Minimum width for smaller screens */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.searchOption h2 {
+  color: #ff3333; /* 紅色子標題 */
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.searchOption p {
+  color: #cccccc;
+  margin-bottom: 1.5rem;
+}
+
+.searchButton {
+  background-color: #ff3333; /* 紅色按鈕 */
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.searchButton:hover {
+  background-color: #cc0000; /* 深紅色 hover */
+}
+
+/* Responsive adjustments for search options */
+@media (max-width: 768px) {
+  .searchOption {
+    flex-basis: 100%; /* Full width on smaller screens */
+  }
+} 

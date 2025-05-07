@@ -1,0 +1,11 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/": "pages/index.js",
+  "/promotions": "pages/promotions.js",
+  "/repair-services": "pages/repair-services.js",
+  "/tire-series": "pages/tire-series.js",
+  "/tire-knowledge": "pages/tire-knowledge.js",
+  "/about": "pages/about.js"
+}

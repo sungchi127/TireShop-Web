@@ -1,0 +1,136 @@
+.navbar {
+  background-color: #000000; /* 黑色背景 */
+  padding: 0 2rem; /* Adjusted padding to control height via content */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ff3333; /* 紅色底線 */
+  color: #ffffff;
+  position: fixed; /* 固定在頂部 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* 確保在其他內容之上 */
+  height: 70px; /* Explicit height for the navbar */
+}
+
+/* Container for logo and site title */
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between logo and title link */
+}
+
+.logoImageLink,
+.siteTitleLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.siteLogoImage {
+  /* width and height are set on the Image component directly */
+  /* Add any additional styling if needed, e.g., vertical alignment if necessary */
+  object-fit: contain; /* Ensure logo is contained and aspect ratio is maintained */
+}
+
+.siteTitle {
+  font-size: 1.6rem; /* Slightly adjusted size */
+  font-weight: bold;
+  color: #ffffff;
+  transition: color 0.2s ease-in-out;
+}
+
+.siteTitleLink:hover .siteTitle {
+  color: #ff3333;
+}
+
+/* Remove .logoLink if no longer used directly */
+/* .logoLink:hover .siteTitle {
+  color: #ff3333; 
+} */
+
+.navLinks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1.5rem; /* 連結間距 */
+}
+
+.navLinks a {
+  color: #ffffff; /* 連結文字白色 */
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.navLinks a:hover {
+  color: #ff3333; /* 連結 hover 時紅色 */
+  text-decoration: underline;
+}
+
+/* Styles for Hamburger Menu (to be added/refined later) */
+.hamburger {
+  display: none; /* Initially hidden on larger screens */
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px; /* Add some padding for easier clicking */
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: 0.4s ease;
+}
+
+/* Hamburger animation lines */
+.line1Open {
+  transform: rotate(-45deg) translate(-7px, 7px);
+}
+.line2Open {
+  opacity: 0;
+}
+.line3Open {
+  transform: rotate(45deg) translate(-6px, -6px);
+}
+
+/* Responsive adjustments (example for screens < 768px) */
+@media (max-width: 768px) {
+  .logoContainer {
+    gap: 10px; /* Reduced gap for smaller screens */
+  }
+  .siteTitle {
+    font-size: 1.3rem; /* Adjust title size on smaller screens */
+  }
+  /* Responsive adjustments for logo size can be done by adjusting width/height on Image directly or via CSS if needed */
+  .navLinks {
+    display: none; /* Initially hidden on small screens */
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 70px; /* Match navbar height */
+    left: 0;
+    background-color: #000000;
+    padding: 1rem 0;
+    border-top: 1px solid #ff3333;
+  }
+
+  .navLinksOpen {
+    display: flex; /* Show when menu is open */
+  }
+
+  .navLinks li {
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+
+  .navLinks a {
+    font-size: 1.2rem;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+} 

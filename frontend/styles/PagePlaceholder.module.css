@@ -1,0 +1,20 @@
+.container {
+  padding: 2rem;
+  text-align: center;
+  min-height: calc(100vh - 70px - 100px - 4rem); /* Full viewport height minus navbar, footer, and padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: #ff3333; /* Red title */
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.comingSoon {
+  color: #e0e0e0;
+  font-size: 1.5rem;
+} 

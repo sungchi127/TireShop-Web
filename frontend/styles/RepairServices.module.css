@@ -1,0 +1,86 @@
+.container {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.pageTitle {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 2.8rem;
+}
+
+.pageSubtitle {
+  color: #e0e0e0;
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+}
+
+.priceTable {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2rem; /* Gap between columns */
+  background-color: #1e1e1e; /* Dark background for the table area */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem; /* Gap between items in a column */
+}
+
+.serviceItem {
+  background-color: #2a2a2a; /* Slightly lighter background for each item */
+  padding: 0.8rem 1.2rem;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #383838;
+}
+
+.serviceName {
+  color: #f0f0f0;
+  font-size: 1.1rem;
+}
+
+.servicePrice {
+  color: #f6eeee; /* Red price text */
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #111; /* Dark background for price */
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+}
+
+.notes {
+  color: #aaaaaa;
+  text-align: center;
+  margin-top: 2.5rem;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .priceTable {
+    flex-direction: column;
+    gap: 0; /* Remove gap, items will have their own gap */
+  }
+  .column + .column {
+    margin-top: 1.5rem; /* Add margin between columns when stacked */
+  }
+  .serviceItem {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+  .serviceName, .servicePrice {
+    font-size: 1rem;
+  }
+} 

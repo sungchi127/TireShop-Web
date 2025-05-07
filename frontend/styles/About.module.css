@@ -1,0 +1,78 @@
+.container {
+  padding: 0rem 0rem 2rem 0rem; /* Adjusted padding */
+}
+
+.hero {
+  background-color: #111; /* Darker hero background */
+  color: #fff;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.pageTitle {
+  margin: 0 0 0.5rem 0;
+  font-size: 2.8rem;
+}
+
+.pageSubtitle {
+  font-size: 1.3rem;
+  color: #ccc;
+  margin: 0;
+}
+
+.contentSection,
+.contactSection {
+  padding: 1rem 2rem; /* Add padding to sections */
+  margin: 0 auto 2rem auto;
+  max-width: 900px; /* Limit width for readability */
+}
+
+.contentSection h2,
+.contactSection h2 {
+  color: #ff3333; /* Red section titles */
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #333;
+  padding-bottom: 0.5rem;
+}
+
+.contentSection p,
+.contentSection ul {
+  color: #e0e0e0;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.contentSection ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.contentSection ul li {
+  margin-bottom: 0.5rem;
+}
+
+.contactDetails p {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 0.75rem;
+}
+
+.contactDetails strong {
+  color: #ffffff;
+}
+
+.mapContainer {
+  margin-top: 2rem;
+  border: 2px solid #333; /* Add a border around the map */
+  border-radius: 8px;      /* Rounded corners for the map container */
+  overflow: hidden;        /* Ensure iframe respects border-radius */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.mapContainer iframe {
+  display: block; /* Remove any default iframe spacing */
+} 

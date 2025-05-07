@@ -1,0 +1,94 @@
+.container {
+  padding: 2rem;
+  text-align: center;
+}
+
+.pageTitle {
+  color: #ffffff; /* 白色主標題 */
+  margin-bottom: 0.5rem;
+  font-size: 2.8rem;
+}
+
+.pageSubtitle {
+  color: #e0e0e0; /* 淺灰色副標題 */
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+}
+
+.seriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 2rem;
+  text-align: left;
+}
+
+.seriesCard {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.seriesCard:hover {
+  transform: translateY(-5px);
+}
+
+/* Container for the Next/Image component */
+.seriesImageContainer {
+  width: 100%;
+  position: relative; /* Required for layout='responsive' or 'fill' if using specific aspect ratio tricks */
+  aspect-ratio: 350 / 200; /* Maintain aspect ratio based on the width/height provided to Image */
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  overflow: hidden; /* Ensures the image respects the border-radius */
+  background-color: #333; /* Fallback background if image is loading or missing */
+}
+
+/* Styling for the Image component itself (optional, if needed for object-fit etc.) */
+.seriesImage {
+  object-fit: cover; /* Or 'contain', depending on how you want the image to fit */
+  border-radius: 6px; /* Match container's border-radius */
+}
+
+.seriesName {
+  color: #ff3333; /* 紅色系列名稱 */
+  font-size: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.seriesSlogan {
+  color: #f0f0f0;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.seriesDescription {
+  color: #cccccc;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex-grow: 1; /* Ensure description takes available space to align buttons */
+  margin-bottom: 1rem;
+}
+
+.viewButton {
+  background-color: #ff3333;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  align-self: flex-start; /* Align button to the start of the flex container */
+}
+
+.viewButton:hover {
+  background-color: #cc0000;
+} 

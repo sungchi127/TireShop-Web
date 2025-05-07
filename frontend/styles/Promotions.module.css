@@ -1,0 +1,110 @@
+.container {
+  padding: 2rem;
+}
+
+.pageTitle {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 2.8rem;
+}
+
+.pageSubtitle {
+  color: #e0e0e0;
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+}
+
+.promotionsGrid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column layout */
+  gap: 2.5rem;
+}
+
+.promoCard {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row; /* Image on left, content on right */
+  overflow: hidden; /* Ensure border-radius applies to children */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.promoImagePlaceholder {
+  width: 250px; /* Fixed width for image placeholder */
+  min-height: 200px;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #777;
+  font-size: 1.2rem;
+  flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.promoContent {
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.promoTitle {
+  color: #ff3333;
+  font-size: 1.6rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.promoDescription {
+  color: #cccccc;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.promoValidity,
+.promoCode {
+  color: #bbbbbb;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.promoValidity strong,
+.promoCode strong {
+  color: #dddddd;
+}
+
+.detailsButton {
+  background-color: #ff3333;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  align-self: flex-start;
+  margin-top: auto; /* Push button to the bottom of the card content */
+}
+
+.detailsButton:hover {
+  background-color: #cc0000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .promoCard {
+    flex-direction: column; /* Stack image and content on smaller screens */
+  }
+  .promoImagePlaceholder {
+    width: 100%;
+    height: 200px; /* Adjust height as needed */
+  }
+  .promoContent {
+    padding: 1.5rem;
+  }
+} 

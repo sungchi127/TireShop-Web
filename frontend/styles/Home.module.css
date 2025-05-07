@@ -1,0 +1,134 @@
+.heroContainer {
+  min-height: calc(100vh - 70px - 100px); /* Navbar + Footer height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/storefront3.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  position: relative; /* For potential pseudo-elements or overlays */
+}
+
+.heroContent {
+  background-color: rgba(0, 0, 0, 0.3); /* Slightly darker semi-transparent overlay for text readability */
+  padding: 2rem 3rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  max-width: 800px;
+}
+
+.heroTitle {
+  font-size: 3.5rem; /* Increased font size */
+  font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  color: #fff; /* Ensure title is white */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Text shadow for better readability */
+}
+
+.heroSubtitle {
+  font-size: 1.5rem; /* Increased font size */
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  color: #f0f0f0; /* Lighter subtitle color */
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroActions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem; /* Space between buttons */
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.heroButtonShared {
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.heroButtonPrimary {
+  composes: heroButtonShared;
+  background-color: #ff3333; /* Red primary button */
+  color: white;
+  border-color: #ff3333;
+}
+
+.heroButtonPrimary:hover {
+  background-color: #cc0000;
+  border-color: #cc0000;
+  transform: translateY(-2px);
+}
+
+.heroButtonSecondary {
+  composes: heroButtonShared;
+  background-color: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.heroButtonSecondary:hover {
+  background-color: #ffffff;
+  color: #1a1a1a; /* Dark text on white hover */
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.8rem;
+  }
+  .heroSubtitle {
+    font-size: 1.2rem;
+  }
+  .heroContent {
+    padding: 1.5rem 2rem;
+  }
+  .heroButtonShared {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Removing old styles that are no longer used */
+/* 
+.container, .main, .title, .description etc. might be here from previous versions
+Ensure they are removed if not used elsewhere or if they conflict.
+For example, the old .title and .description styles:
+.title a {
+  color: #ff3333; 
+  text-decoration: none;
+}
+.title a:hover,
+.title a:focus,
+.title a:active {
+  text-decoration: underline;
+}
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+  color: #ffffff; 
+}
+.title,
+.description {
+  text-align: center;
+}
+.description {
+  line-height: 1.5;
+  font-size: 1.5rem;
+  color: #e6e6e6; 
+}
+*/ 
