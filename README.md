@@ -1,7 +1,7 @@
 # 輪胎館 - 線上訂購與管理系統
 
 這是一個專為輪胎館設計的線上輪胎訂購與後台管理系統。前端使用 Next.js (React) 建立，提供使用者友好的介面；後端則由 Node.js (Express.js) 和 MongoDB 構成，負責處理業務邏輯與資料儲存。  
-連結:https://tire-shop-web.vercel.app/  
+連結:https://www.kuang-i.com/ 
 (因無時間維護，因此只保留前端功能)
 
 ## 主要功能
