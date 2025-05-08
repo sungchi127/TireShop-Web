@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Navbar from './Navbar';
 import styles from '../styles/Layout.module.css'; // 我們稍後會建立這個 CSS Module
 import { useState, useEffect } from 'react'; // Import useState and useEffect
@@ -47,6 +48,11 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <Head>
+        <title>廣翊輪胎館</title>
+        <meta name="description" content="廣翊輪胎館提供專業的普利司通輪胎訂購、安裝及全面的汽車維修保養服務。" />
+        <link rel="icon" href="/images/bridgestone_logo.jpg" />
+      </Head>
       <Navbar />
       <main className={styles.mainContent}>{children}</main>
       <footer className={styles.footer}>

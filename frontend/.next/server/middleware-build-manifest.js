@@ -20,15 +20,15 @@ globalThis.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/find-tires": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/find-tires.js"
+    ],
     "/repair-services": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/repair-services.js"
-    ],
-    "/tire-knowledge": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/tire-knowledge.js"
     ],
     "/tire-series": [
       "static/chunks/webpack.js",

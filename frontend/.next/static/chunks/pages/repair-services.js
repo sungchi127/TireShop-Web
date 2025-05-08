@@ -28,16 +28,6 @@ eval(__webpack_require__.ts("\n    (window.__NEXT_P = window.__NEXT_P || []).pus
 
 /***/ }),
 
-/***/ "(pages-dir-browser)/./node_modules/next/head.js":
-/*!***********************************!*\
-  !*** ./node_modules/next/head.js ***!
-  \***********************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval(__webpack_require__.ts("module.exports = __webpack_require__(/*! ./dist/shared/lib/head */ \"(pages-dir-browser)/./node_modules/next/dist/shared/lib/head.js\")\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHBhZ2VzLWRpci1icm93c2VyKS8uL25vZGVfbW9kdWxlcy9uZXh0L2hlYWQuanMiLCJtYXBwaW5ncyI6IkFBQUEscUlBQWtEIiwic291cmNlcyI6WyJDOlxcVXNlcnNcXOWTsumgpFxcRGVza3RvcFxcQnJpZGdlU3RvbmVcXGZyb250ZW5kXFxub2RlX21vZHVsZXNcXG5leHRcXGhlYWQuanMiXSwic291cmNlc0NvbnRlbnQiOlsibW9kdWxlLmV4cG9ydHMgPSByZXF1aXJlKCcuL2Rpc3Qvc2hhcmVkL2xpYi9oZWFkJylcbiJdLCJuYW1lcyI6W10sImlnbm9yZUxpc3QiOlswXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(pages-dir-browser)/./node_modules/next/head.js\n"));
-
-/***/ }),
-
 /***/ "(pages-dir-browser)/./pages/repair-services.js":
 /*!**********************************!*\
   !*** ./pages/repair-services.js ***!
