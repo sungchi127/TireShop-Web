@@ -2,12 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/repair-services": "pages/repair-services.js",
-  "/admin/orders": "pages/admin/orders.js",
-  "/find-tires": "pages/find-tires.js",
-  "/tire-order": "pages/tire-order.js",
-  "/tire-knowledge": "pages/tire-knowledge.js",
   "/tire-series": "pages/tire-series.js",
-  "/about": "pages/about.js"
+  "/find-tires": "pages/find-tires.js",
+  "/tire-order": "pages/tire-order.js"
 }
