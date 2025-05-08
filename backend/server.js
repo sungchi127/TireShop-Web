@@ -316,7 +316,7 @@ app.post('/api/auth/login', async (req, res) => {
       httpOnly: true, // 防止客戶端 JS 訪問
       secure: process.env.NODE_ENV === 'production', // 在生產環境中只透過 HTTPS 傳輸
       maxAge: 24 * 60 * 60 * 1000, // 1 day (in milliseconds)
-      sameSite: 'lax' // 或者 'strict'，根據需求調整
+      sameSite: 'none' // 或者 'strict'，根據需求調整
     });
 
     res.status(200).json({ message: '登入成功', admin: { id: admin._id, username: admin.username } });
