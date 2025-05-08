@@ -10,6 +10,7 @@ const AdminOrdersPage = () => {
   const [error, setError] = useState(null);
   const [updatingStatus, setUpdatingStatus] = useState(null); // Track which order is being updated
   const router = useRouter();
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   const orderStatuses = ['pending', 'confirmed', 'processing', 'completed', 'cancelled'];
   const statusLabels = { // Optional: mapping for display names
@@ -21,10 +22,15 @@ const AdminOrdersPage = () => {
   };
 
   const fetchOrders = async () => {
+    if (!apiBaseUrl) {
+      setError('API 服務目前無法使用。');
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('http://localhost:3001/api/orders', {
+      const response = await fetch(`${apiBaseUrl}/api/orders`, {
         credentials: 'include',
       });
       
@@ -58,13 +64,19 @@ const AdminOrdersPage = () => {
 
   useEffect(() => {
     fetchOrders();
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [apiBaseUrl, router]); // router is needed if it's used inside for navigation
 
   const handleStatusChange = async (orderId, newStatus) => {
+    if (!apiBaseUrl) {
+      setError(`更新訂單 ${orderId} 狀態失敗: API 服務無法使用。`);
+      setUpdatingStatus(null);
+      return;
+    }
     setUpdatingStatus(orderId); // Indicate loading for this specific row
     setError(null);
     try {
-      const response = await fetch(`http://localhost:3001/api/orders/${orderId}`, {
+      const response = await fetch(`${apiBaseUrl}/api/orders/${orderId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

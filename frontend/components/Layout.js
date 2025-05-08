@@ -10,15 +10,20 @@ const Layout = ({ children }) => {
     today: null,
     month: null
   });
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   useEffect(() => {
     // Function to fetch visit count
     const fetchVisitCount = async () => {
+      if (!apiBaseUrl) {
+        setVisitorCounts({ total: 'N/A', today: 'N/A', month: 'N/A' });
+        return;
+      }
       try {
         // Ensure this only runs on the client side
         if (typeof window !== 'undefined') {
           // We assume your backend is running on port 3001
-          const response = await fetch('http://localhost:3001/api/visits/count');
+          const response = await fetch(`${apiBaseUrl}/api/visits/count`);
           if (response.ok) {
             const data = await response.json();
             // 更新狀態以匹配 API 回應的結構
@@ -44,7 +49,7 @@ const Layout = ({ children }) => {
     // const intervalId = setInterval(fetchVisitCount, 60000); // e.g., every 60 seconds
     // return () => clearInterval(intervalId); // Cleanup interval on component unmount
 
-  }, []); // Empty dependency array ensures this runs once when the component mounts
+  }, [apiBaseUrl]); // 將 apiBaseUrl 加入依賴項陣列
 
   return (
     <>

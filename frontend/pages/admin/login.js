@@ -9,14 +9,20 @@ const AdminLoginPage = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!apiBaseUrl) {
+      setError('API 服務目前無法使用，請稍後再試。');
+      setIsLoading(false);
+      return;
+    }
     setIsLoading(true);
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:3001/api/auth/login', {
+      const response = await fetch(`${apiBaseUrl}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

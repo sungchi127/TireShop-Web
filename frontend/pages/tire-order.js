@@ -22,6 +22,7 @@ const TireOrderPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false); // For loading state
   const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
   const [submitMessage, setSubmitMessage] = useState('');
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   // Available start times - you can customize these
   const availableTimes = [
