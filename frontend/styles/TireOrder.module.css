@@ -156,4 +156,59 @@
   background-color: #dc3545; /* Red for error */
   color: white;
   border: 1px solid #b21f2d;
+}
+
+/* 新增樣式 for service notice and disabled form */
+.serviceNotice {
+  background-color: #332222; /* 深紅色背景，不那麼刺眼 */
+  color: #ffd7d7; /* 淡紅色文字 */
+  border: 1px solid #ff6666; /* 紅色邊框 */
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.serviceNotice p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.serviceNotice strong {
+  color: #ffffff; /* 強調文字用白色 */
+}
+
+.noticePhoneNumber {
+  font-size: 1.5rem; /* 放大電話號碼 */
+  font-weight: bold;
+  color: #ffdd88; /* 暖黃色，使其突出 */
+  margin-top: 0.75rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+/* Style for the form when it's visually disabled */
+.formDisabledVisuals {
+  opacity: 0.6; /* 使表單看起來有點褪色 */
+  pointer-events: none; /* 禁用所有滑鼠事件，雖然 input 已 disabled */
+}
+
+.formDisabledVisuals .fieldset,
+.formDisabledVisuals .legend {
+  border-color: #555; /* 淡化邊框和 legend 顏色 */
+  color: #888;
+}
+
+/* 確保 disabled input 有明確的視覺提示 (雖然瀏覽器有預設) */
+.input:disabled,
+.textarea:disabled,
+.select:disabled {
+  background-color: #252525; /* 更暗的背景 */
+  color: #777; /* 更暗的文字 */
+  cursor: not-allowed;
+}
+
+.submitButton:disabled {
+  background-color: #555 !important; /* 重要以覆蓋原有樣式 */
+  color: #999 !important;
+  cursor: not-allowed;
 } 
