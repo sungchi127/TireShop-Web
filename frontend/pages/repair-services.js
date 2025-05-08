@@ -34,7 +34,7 @@ const RepairServicesPage = () => {
       <p className={styles.pageSubtitle}>透明公開的價格，讓您安心選擇所需服務。</p>
 
       <p className={`${styles.notes} ${styles.notesMovedUp}`}> 
-        * 以上價格僅供參考，實際費用可能因車型或特殊狀況而有所調整，詳情請洽現場服務人員。
+        * 以下價格僅供參考，實際費用可能因車型或特殊狀況而有所調整，詳情請洽現場服務人員。
       </p>
 
       <div className={styles.priceTable}>
