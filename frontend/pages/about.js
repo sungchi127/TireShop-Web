@@ -47,6 +47,10 @@ const AboutPage = () => {
           <p><strong>地址：</strong> 429台中市神岡區中山路1196-2號 (詳細地址請參考地圖)</p>
         </div>
         
+        <p className={styles.googleReviewPrompt}>
+          如果您對我們的服務感到滿意，請不吝在 <a href="https://maps.app.goo.gl/xQ7CAtVR5EBLifNq7" target="_blank" rel="noopener noreferrer" className={styles.googleReviewLink}>Google Maps (日本普利司通輪胎館-廣翊店)</a> 給予我們五星好評 !   您的支持是我們最大的動力！
+        </p>
+
         <div className={styles.mapContainer}>
           <iframe 
             src={googleMapsEmbedUrl}
@@ -65,4 +69,4 @@ const AboutPage = () => {
 
 };
 
-export default AboutPage; 
+export default AboutPage;

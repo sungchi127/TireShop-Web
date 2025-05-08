@@ -40,10 +40,27 @@ mongoose.connection.on('disconnected', () => {
 // --- 資料庫連接結束 ---
 
 // --- 中介軟體 (Middleware) ---
-app.use(cors({ 
-    credentials: true, // <--- 允許跨域請求攜帶 cookie
-    origin: 'http://localhost:3000' // <--- 明確指定允許的前端來源 (生產環境應設為實際網域)
-})); 
+const allowedOrigins = [];
+if (process.env.CORS_ORIGIN_CLIENT_URL_PRIMARY) {
+  allowedOrigins.push(process.env.CORS_ORIGIN_CLIENT_URL_PRIMARY);
+}
+if (process.env.CORS_ORIGIN_CLIENT_URL_SECONDARY) {
+  allowedOrigins.push(process.env.CORS_ORIGIN_CLIENT_URL_SECONDARY);
+}
+
+app.use(cors({
+  credentials: true, // 允許跨域請求攜帶 cookie
+  origin: function (origin, callback) {
+    // 允許沒有 origin 的請求 (例如 Postman, curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not ' +
+                  'allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser()); // <--- 使用 cookie-parser

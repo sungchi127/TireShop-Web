@@ -65,14 +65,38 @@
   color: #ffffff;
 }
 
+/* 新增 Google Review Prompt 樣式 */
+.googleReviewPrompt {
+  color: #f0f0f0; /* 提示文字顏色 */
+  font-size: 1.05rem; /* 比一般內文稍大一點 */
+  text-align: center;
+  margin-top: 1.5rem; /* 與上方聯絡資訊的間距 */
+  margin-bottom: 2rem; /* 與下方地圖的間距 */
+  padding: 1rem;
+  background-color: #2a2a2a; /* 稍微不同的背景色以突出 */
+  border-radius: 6px;
+  border: 1px solid #444;
+}
+
+.googleReviewLink {
+  color: #ffdd88; /* 連結使用暖黃色 */
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.googleReviewLink:hover {
+  color: #ffc966; /* Hover 時稍微變亮 */
+  text-decoration: none;
+}
+
 .mapContainer {
-  margin-top: 2rem;
-  border: 2px solid #333; /* Add a border around the map */
-  border-radius: 8px;      /* Rounded corners for the map container */
-  overflow: hidden;        /* Ensure iframe respects border-radius */
+  margin-top: 0rem; /* 調整原有的 margin-top，因為 review prompt 會提供間距 */
+  border: 2px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .mapContainer iframe {
-  display: block; /* Remove any default iframe spacing */
+  display: block;
 } 

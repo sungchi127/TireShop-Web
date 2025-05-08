@@ -23,15 +23,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/find-tires": [
+    "/about": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/find-tires.js"
+      "static/chunks/pages/about.js"
     ],
-    "/repair-services": [
+    "/admin/orders": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/repair-services.js"
+      "static/chunks/pages/admin/orders.js"
     ]
   },
   "ampFirstPages": []
