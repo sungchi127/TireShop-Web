@@ -2,11 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/tire-order": "pages/tire-order.js",
-  "/": "pages/index.js",
   "/tire-series": "pages/tire-series.js",
   "/tire-knowledge": "pages/tire-knowledge.js",
-  "/find-tires": "pages/find-tires.js",
-  "/repair-services": "pages/repair-services.js",
-  "/about": "pages/about.js"
+  "/repair-services": "pages/repair-services.js"
 }

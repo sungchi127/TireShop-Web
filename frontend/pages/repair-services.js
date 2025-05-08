@@ -33,6 +33,10 @@ const RepairServicesPage = () => {
       <h1 className={styles.pageTitle}>維修價目表</h1>
       <p className={styles.pageSubtitle}>透明公開的價格，讓您安心選擇所需服務。</p>
 
+      <p className={`${styles.notes} ${styles.notesMovedUp}`}> 
+        * 以上價格僅供參考，實際費用可能因車型或特殊狀況而有所調整，詳情請洽現場服務人員。
+      </p>
+
       <div className={styles.priceTable}>
         <div className={styles.column}>
           {servicesData.leftColumn.map((service, index) => (
@@ -51,9 +55,6 @@ const RepairServicesPage = () => {
           ))}
         </div>
       </div>
-      <p className={styles.notes}>
-        * 以上價格僅供參考，實際費用可能因車型或特殊狀況而有所調整，詳情請洽現場服務人員。
-      </p>
     </div>
   );
 };

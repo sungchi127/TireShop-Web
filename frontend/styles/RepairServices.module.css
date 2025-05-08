@@ -63,9 +63,19 @@
 .notes {
   color: #aaaaaa;
   text-align: center;
-  margin-top: 2.5rem;
+  /* margin-top: 2.5rem; */ /* 移除或調整原有的 margin-top */
   font-size: 0.9rem;
   font-style: italic;
+  line-height: 1.5; /* 稍微增加行高，使其更易讀 */
+}
+
+/* 新增樣式，用於調整移動到副標題下方後的 notes */
+.notesMovedUp {
+  margin-top: 1rem; /* 與副標題的間距 */
+  margin-bottom: 2rem; /* 與價格表的間距 */
+  max-width: 700px; /* 可以稍微限制寬度，使其在標題下方更集中 */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Responsive adjustments */
@@ -82,5 +92,9 @@
   }
   .serviceName, .servicePrice {
     font-size: 1rem;
+  }
+  .notesMovedUp {
+    margin-top: 0.8rem;
+    margin-bottom: 1.5rem;
   }
 } 
