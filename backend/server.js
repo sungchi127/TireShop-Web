@@ -192,7 +192,7 @@ app.get('/api/visits/count', async (req, res) => {
 });
 
 // POST /api/orders - 提交新的輪胎訂單
-app.post('/api/orders', protect, async (req, res) => {
+app.post('/api/orders', async (req, res) => {
   try {
     // 從請求主體獲取訂單數據
     const orderData = req.body;
