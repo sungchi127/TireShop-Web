@@ -4,83 +4,83 @@ import Link from 'next/link'; // Import Link component
 import { useState } from 'react'; // Import useState
 import styles from '../styles/Promotions.module.css';
 
-const promotionsData = [
+const promotionsData = [ // GPT DONT MODIFY THE PRICE
   {
     id: 'PSR17005',
     name: '普利司通 225/60 R18 ALENZA H/L 33 100V 日本',
-    tirePrice: 4150,
+    tirePrice: 3850,
     tireSizeInch: 18,
     // installationCost: 400, // Removed, will be looked up
   },
   {
     id: 'PSRFB03',
     name: '普利司通 225/60 R18 ALENZA LX100 100H 台灣',
-    tirePrice: 4110,
+    tirePrice: 3810,
     tireSizeInch: 18,
     // image: '/images/promos/alenza_lx100_placeholder.png', // Removed
   },
   {
     id: 'PSRF829',
     name: '普利司通 225/60 R18 HL422+ 100H 台灣',
-    tirePrice: 3830,
+    tirePrice: 3530,
     tireSizeInch: 18,
     // image: '/images/promos/hl422plus_placeholder.png', // Removed
   },
   {
     id: 'PSR0FA48',
     name: '普利司通 235/60 R18 ALENZA 001 107W 台灣',
-    tirePrice: 4060,
+    tirePrice: 3760,
     tireSizeInch: 18,
     // image: '/images/promos/alenza_001_placeholder.png', // Removed
   },
   {
     id: 'PSRFB02',
     name: '普利司通 235/60 R18 ALENZA LX100 103H 台灣',
-    tirePrice: 4110,
+    tirePrice: 3810,
     tireSizeInch: 18,
     // image: '/images/promos/alenza_lx100_235_placeholder.png', // Removed
   },
   {
     id: 'PSRF914',
     name: '普利司通 235/60 R18 D33 103H 台灣',
-    tirePrice: 3730,
+    tirePrice: 3430,
     tireSizeInch: 18,
     // image: '/images/promos/d33_placeholder.png', // Removed
   },
   {
     id: 'PSR0FA40',
     name: '普利司通 215/55 R17 T005A 094W 台灣',
-    tirePrice: 4520,
+    tirePrice: 3540,
     tireSizeInch: 17,
   },
   {
     id: 'PSR0FA76',
     name: '普利司通 215/55 R17 TURANZA 6 094W 台灣',
-    tirePrice: 4550,
+    tirePrice: 3400,
     tireSizeInch: 17,
   },
   {
     id: 'PSR0F830',
     name: '普利司通 215/55 R17 EP150 098V 台灣',
-    tirePrice: 4350,
+    tirePrice: 3170,
     tireSizeInch: 17,
   },
   {
     id: 'PSR0F781',
     name: '普利司通 215/55 R17 ER33 094V 台灣',
-    tirePrice: 4350,
+    tirePrice: 3010,
     tireSizeInch: 17,
   },
   {
     id: 'PSR0FA26',
     name: '普利司通 215/60 R17 ALENZA 001 096H 台灣',
-    tirePrice: 4350,
+    tirePrice: 3090,
     tireSizeInch: 17,
   },
   {
     id: 'PSR0NJB6',
     name: '普利司通 215/60 R17 TURANZA 6 100H 印尼',
-    tirePrice: 4350,
+    tirePrice: 3410,
     tireSizeInch: 17,
   },
 ];
@@ -100,7 +100,6 @@ const GOOGLE_FORM_BASE_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdVsteDE7
 const GOOGLE_FORM_ENTRY_ID_BRAND = 'entry.1921662082';
 const GOOGLE_FORM_ENTRY_ID_SERIES = 'entry.1072112746';
 const GOOGLE_FORM_ENTRY_ID_SPECS = 'entry.1105943312';
-const GOOGLE_FORM_ENTRY_ID_QUANTITY = 'entry.1380292667';
 
 // Helper function to extract tire width from the name string
 const getWidthFromTireName = (name) => {
@@ -169,7 +168,7 @@ const PromotionsPage = () => {
       </Head>
 
       <h1 className={styles.pageTitle}>輪胎限時促銷</h1>
-      <p className={styles.pageSubtitle}>把握優惠，為您的愛車換上最合適的新鞋！</p>
+      <p className={styles.pageSubtitle}>於 2025/05/10 更新以下促銷輪胎</p>
 
       {/* Filter Section */}
       <div className={styles.filterContainer}>
@@ -198,7 +197,7 @@ const PromotionsPage = () => {
         <div className={styles.serviceOptionGlobalContainer}>
           <div className={styles.serviceOptionGlobal}>
             <h3 className={styles.serviceOptionTitle}>現場安裝</h3>
-            <p>包含輪胎拆裝及平衡，工資如下：</p>
+            <p>包含輪胎拆裝及平衡，工錢如下：</p>
             <ul className={styles.installationListSmall}>
               {installationCostsInfo.map((item) => (
                 <li key={item.sizeRange}>
@@ -233,7 +232,6 @@ const PromotionsPage = () => {
             if (brand) prefilledGoogleFormUrl += `&${GOOGLE_FORM_ENTRY_ID_BRAND}=${encodeURIComponent(brand)}`;
             if (series) prefilledGoogleFormUrl += `&${GOOGLE_FORM_ENTRY_ID_SERIES}=${encodeURIComponent(series)}`;
             if (specDetails) prefilledGoogleFormUrl += `&${GOOGLE_FORM_ENTRY_ID_SPECS}=${encodeURIComponent(specDetails)}`;
-            prefilledGoogleFormUrl += `&${GOOGLE_FORM_ENTRY_ID_QUANTITY}=${encodeURIComponent(1)}`;
 
             // No need to remove trailing '&' if all parameters are always added or handled correctly.
             // The old logic for removing trailing '&' was fine but make sure the first param is after ? and rest are &
