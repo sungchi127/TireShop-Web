@@ -8,79 +8,79 @@ const promotionsData = [
   {
     id: 'PSR17005',
     name: '普利司通 225/60 R18 ALENZA H/L 33 100V 日本',
-    tirePrice: 3850,
+    tirePrice: 4150,
     tireSizeInch: 18,
     // installationCost: 400, // Removed, will be looked up
   },
   {
     id: 'PSRFB03',
     name: '普利司通 225/60 R18 ALENZA LX100 100H 台灣',
-    tirePrice: 3810,
+    tirePrice: 4110,
     tireSizeInch: 18,
     // image: '/images/promos/alenza_lx100_placeholder.png', // Removed
   },
   {
     id: 'PSRF829',
     name: '普利司通 225/60 R18 HL422+ 100H 台灣',
-    tirePrice: 3530,
+    tirePrice: 3830,
     tireSizeInch: 18,
     // image: '/images/promos/hl422plus_placeholder.png', // Removed
   },
   {
     id: 'PSR0FA48',
     name: '普利司通 235/60 R18 ALENZA 001 107W 台灣',
-    tirePrice: 3760,
+    tirePrice: 4060,
     tireSizeInch: 18,
     // image: '/images/promos/alenza_001_placeholder.png', // Removed
   },
   {
     id: 'PSRFB02',
     name: '普利司通 235/60 R18 ALENZA LX100 103H 台灣',
-    tirePrice: 3810,
+    tirePrice: 4110,
     tireSizeInch: 18,
     // image: '/images/promos/alenza_lx100_235_placeholder.png', // Removed
   },
   {
     id: 'PSRF914',
     name: '普利司通 235/60 R18 D33 103H 台灣',
-    tirePrice: 3430,
+    tirePrice: 3730,
     tireSizeInch: 18,
     // image: '/images/promos/d33_placeholder.png', // Removed
   },
   {
     id: 'PSR0FA40',
     name: '普利司通 215/55 R17 T005A 094W 台灣',
-    tirePrice: 3550,
+    tirePrice: 4520,
     tireSizeInch: 17,
   },
   {
     id: 'PSR0FA76',
     name: '普利司通 215/55 R17 TURANZA 6 094W 台灣',
-    tirePrice: 3400,
+    tirePrice: 4550,
     tireSizeInch: 17,
   },
   {
     id: 'PSR0F830',
     name: '普利司通 215/55 R17 EP150 098V 台灣',
-    tirePrice: 3170,
+    tirePrice: 4350,
     tireSizeInch: 17,
   },
   {
     id: 'PSR0F781',
     name: '普利司通 215/55 R17 ER33 094V 台灣',
-    tirePrice: 3010,
+    tirePrice: 4350,
     tireSizeInch: 17,
   },
   {
     id: 'PSR0FA26',
     name: '普利司通 215/60 R17 ALENZA 001 096H 台灣',
-    tirePrice: 3090,
+    tirePrice: 4350,
     tireSizeInch: 17,
   },
   {
     id: 'PSR0NJB6',
     name: '普利司通 215/60 R17 TURANZA 6 100H 印尼',
-    tirePrice: 3420,
+    tirePrice: 4350,
     tireSizeInch: 17,
   },
 ];
@@ -92,7 +92,15 @@ const installationCostsInfo = [
 ];
 
 const SHIPPING_COST_PER_TIRE = 100;
-const GOOGLE_FORM_URL = 'https://forms.gle/TMTbcoKFRg4FZmM58';
+
+// Updated Google Form base URL - REMOVE query parameters from here
+const GOOGLE_FORM_BASE_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdVsteDE7s__Z2uatFTiVChg9YkM8srsN_uTZaZerihbtZJjQ/viewform';
+
+// Entry IDs are correctly identified by the user
+const GOOGLE_FORM_ENTRY_ID_BRAND = 'entry.1921662082';
+const GOOGLE_FORM_ENTRY_ID_SERIES = 'entry.1072112746';
+const GOOGLE_FORM_ENTRY_ID_SPECS = 'entry.1105943312';
+const GOOGLE_FORM_ENTRY_ID_QUANTITY = 'entry.1380292667';
 
 // Helper function to extract tire width from the name string
 const getWidthFromTireName = (name) => {
@@ -108,6 +116,33 @@ const getWidthFromTireName = (name) => {
     }
   }
   return null;
+};
+
+// New helper function to parse promo name for pre-filling
+const parsePromoNameForForm = (name) => {
+  if (typeof name !== 'string') {
+    return { brand: '', series: '', specDetails: name || '' };
+  }
+  // Regex: Brand (non-space) -whitespace- Spec (e.g., 225/60 R18) -whitespace- Series (non-greedy) -whitespace- Trailing details
+  const regex = /^(\S+)\s+(\d{2,3}\/\d{2}\s*R\d{2,3})\s+(.+?)\s+([\w\d]+\s*\S+)$/;
+  const match = name.match(regex);
+
+  if (match) {
+    return {
+      brand: match[1],                                 // e.g., "普利司通"
+      series: match[3],                                // e.g., "ALENZA LX100"
+      specDetails: `${match[2]} ${match[4]}`,          // e.g., "225/60 R18 100H 台灣"
+    };
+  } else {
+    // Fallback if regex doesn't match perfectly
+    const parts = name.split(' ');
+    const brand = parts[0] || '';
+    // Attempt to put the rest into specDetails; series might be harder to guess reliably here
+    const specDetails = parts.slice(1).join(' ') || '';
+    // For series, if it's a simple structure like "Brand Series Spec", this might catch it
+    const series = parts.length > 2 ? parts.slice(1, parts.length -1).join(' ') : ''; 
+    return { brand, series: (parts.length > 3 && !specDetails.startsWith(series)) ? '' : series , specDetails }; 
+  }
 };
 
 const tireWidthOptions = ['155', '165', '175', '185', '195', '205', '215', '225', '235', '245', '255'];
@@ -189,6 +224,20 @@ const PromotionsPage = () => {
             const installedPrice = promo.tirePrice + installCost;
             const shippedPrice = promo.tirePrice + SHIPPING_COST_PER_TIRE;
 
+            const { brand, series, specDetails } = parsePromoNameForForm(promo.name);
+            
+            // Start with the base URL, add 'usp=pp_url' (or similar, as provided by Google Forms when getting pre-filled link)
+            // and then append entries.
+            let prefilledGoogleFormUrl = `${GOOGLE_FORM_BASE_URL}?usp=pp_url`; // Or other usp parameter if different
+
+            if (brand) prefilledGoogleFormUrl += `&${GOOGLE_FORM_ENTRY_ID_BRAND}=${encodeURIComponent(brand)}`;
+            if (series) prefilledGoogleFormUrl += `&${GOOGLE_FORM_ENTRY_ID_SERIES}=${encodeURIComponent(series)}`;
+            if (specDetails) prefilledGoogleFormUrl += `&${GOOGLE_FORM_ENTRY_ID_SPECS}=${encodeURIComponent(specDetails)}`;
+            prefilledGoogleFormUrl += `&${GOOGLE_FORM_ENTRY_ID_QUANTITY}=${encodeURIComponent(1)}`;
+
+            // No need to remove trailing '&' if all parameters are always added or handled correctly.
+            // The old logic for removing trailing '&' was fine but make sure the first param is after ? and rest are &
+
             return (
               <div key={promo.id} className={styles.promoCard}>
                 {/* Image container removed */}
@@ -221,7 +270,7 @@ const PromotionsPage = () => {
                     </div>
                   </div>
                   
-                  <Link href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer" className={styles.orderButton}>
+                  <Link href={prefilledGoogleFormUrl} target="_blank" rel="noopener noreferrer" className={styles.orderButton}>
                     立即訂購 (前往表單)
                   </Link>
                 </div>
