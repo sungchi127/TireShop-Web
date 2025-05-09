@@ -69,6 +69,17 @@
   text-decoration: underline;
 }
 
+/* Style for the standout promotions link */
+.promotionsLink {
+  font-weight: bold !important; /* Make text bold */
+  color: #FFD700 !important; /* Bright yellow color */
+}
+
+.promotionsLink:hover {
+  color: #FF6347 !important; /* Tomato red on hover for standout link */
+  text-decoration: underline !important;
+}
+
 /* Styles for Hamburger Menu (to be added/refined later) */
 .hamburger {
   display: none; /* Initially hidden on larger screens */

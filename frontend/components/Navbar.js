@@ -55,10 +55,10 @@ const Navbar = () => {
         <div className={menuOpen ? styles.line3Open : styles.line3}></div>
       </div>
       <ul className={`${styles.navLinks} ${menuOpen ? styles.navLinksOpen : ''}`}>
+        <li><Link href="/promotions" onClick={menuOpen ? toggleMenu : undefined} className={styles.promotionsLink}>最新輪胎促銷</Link></li>
         <li><Link href="/find-tires" onClick={menuOpen ? toggleMenu : undefined}>尋找輪胎</Link></li>
         <li><Link href="/tire-order" onClick={menuOpen ? toggleMenu : undefined}>輪胎訂購</Link></li>
         <li><Link href="/tire-series" onClick={menuOpen ? toggleMenu : undefined}>輪胎系列</Link></li>
-        {/* <li><Link href="/promotions" onClick={menuOpen ? toggleMenu : undefined}>最新促銷</Link></li> */}
         <li><Link href="/tire-knowledge" onClick={menuOpen ? toggleMenu : undefined}>輪胎知識</Link></li>
         <li><Link href="/repair-services" onClick={menuOpen ? toggleMenu : undefined}>維修價目表</Link></li>
         <li><Link href="/about" onClick={menuOpen ? toggleMenu : undefined}>關於我們</Link></li>
