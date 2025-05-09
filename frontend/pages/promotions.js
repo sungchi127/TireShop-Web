@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link'; // Import Link component
 // import Image from 'next/image'; // Image component is no longer needed
+import { useState } from 'react'; // Import useState
 import styles from '../styles/Promotions.module.css';
 
 const promotionsData = [
@@ -93,13 +94,37 @@ const installationCostsInfo = [
 const SHIPPING_COST_PER_TIRE = 100;
 const GOOGLE_FORM_URL = 'https://forms.gle/TMTbcoKFRg4FZmM58';
 
+// Helper function to extract tire width from the name string
+const getWidthFromTireName = (name) => {
+  if (typeof name !== 'string') return null;
+  const parts = name.split(' '); // e.g., ['普利司通', '225/60', 'R18', ...]
+  if (parts.length > 1) {
+    const specPart = parts[1]; // '225/60'
+    if (typeof specPart === 'string') {
+      const widthPart = specPart.split('/')[0]; // '225'
+      if (!isNaN(widthPart)) {
+        return widthPart;
+      }
+    }
+  }
+  return null;
+};
+
+const tireWidthOptions = ['155', '165', '175', '185', '195', '205', '215', '225', '235', '245', '255'];
+
 const PromotionsPage = () => {
+  const [selectedWidth, setSelectedWidth] = useState(''); // '' for All
+
   const getInstallationCost = (tireSizeInch) => {
     const foundCostInfo = installationCostsInfo.find(
       (info) => tireSizeInch >= info.minSize && tireSizeInch <= info.maxSize
     );
     return foundCostInfo ? foundCostInfo.cost : 0; // Default to 0 if not found, though should always be found for these items
   };
+
+  const filteredPromotions = selectedWidth
+    ? promotionsData.filter(promo => getWidthFromTireName(promo.name) === selectedWidth)
+    : promotionsData;
 
   return (
     <div className={styles.container}>
@@ -110,6 +135,28 @@ const PromotionsPage = () => {
 
       <h1 className={styles.pageTitle}>輪胎限時促銷</h1>
       <p className={styles.pageSubtitle}>把握優惠，為您的愛車換上最合適的新鞋！</p>
+
+      {/* Filter Section */}
+      <div className={styles.filterContainer}>
+        <h3 className={styles.filterTitle}>胎面寬度</h3>
+        <div className={styles.filterOptionsList}>
+          <button
+            className={`${styles.filterOptionButton} ${selectedWidth === '' ? styles.activeFilter : ''}`}
+            onClick={() => setSelectedWidth('')}
+          >
+            全部顯示
+          </button>
+          {tireWidthOptions.map(width => (
+            <button
+              key={width}
+              className={`${styles.filterOptionButton} ${selectedWidth === width ? styles.activeFilter : ''}`}
+              onClick={() => setSelectedWidth(width)}
+            >
+              {width}
+            </button>
+          ))}
+        </div>
+      </div>
 
       <div className={styles.installationInfoSection}>
         <h2 className={styles.subHeading}>服務選項說明</h2>
@@ -135,52 +182,56 @@ const PromotionsPage = () => {
         </div>
       </div>
 
-      <div className={styles.promotionsGrid}>
-        {promotionsData.map((promo) => {
-          const installCost = getInstallationCost(promo.tireSizeInch);
-          const installedPrice = promo.tirePrice + installCost;
-          const shippedPrice = promo.tirePrice + SHIPPING_COST_PER_TIRE;
+      {filteredPromotions.length > 0 ? (
+        <div className={styles.promotionsGrid}>
+          {filteredPromotions.map((promo) => {
+            const installCost = getInstallationCost(promo.tireSizeInch);
+            const installedPrice = promo.tirePrice + installCost;
+            const shippedPrice = promo.tirePrice + SHIPPING_COST_PER_TIRE;
 
-          return (
-            <div key={promo.id} className={styles.promoCard}>
-              {/* Image container removed */}
-              {/* <div className={styles.promoImageContainer}> ... </div> */}
-              <div className={styles.promoContent}>
-                <h3 className={styles.promoName}>{promo.name}</h3>
-                <p className={styles.promoTirePrice}>
-                  輪胎優惠價： <span className={styles.priceValue}>{promo.tirePrice}元/條</span>
-                </p>
+            return (
+              <div key={promo.id} className={styles.promoCard}>
+                {/* Image container removed */}
+                {/* <div className={styles.promoImageContainer}> ... </div> */}
+                <div className={styles.promoContent}>
+                  <h3 className={styles.promoName}>{promo.name}</h3>
+                  <p className={styles.promoTirePrice}>
+                    輪胎優惠價： <span className={styles.priceValue}>{promo.tirePrice}元/條</span>
+                  </p>
 
-                <div className={styles.serviceOptionsContainer}>
-                  <div className={styles.serviceOptionCard}>
-                    <h4 className={styles.serviceOptionCardTitle}>選擇一：現場安裝</h4>
-                    <p className={styles.serviceDetail}>
-                      安裝費 ({promo.tireSizeInch}吋)： <span className={styles.costHighlightSm}>{installCost}元/條</span>
-                    </p>
-                    <p className={styles.totalEstimate}>
-                      完工總價 (1條)： <span className={styles.totalPriceValue}>{installedPrice}元</span>
-                    </p>
+                  <div className={styles.serviceOptionsContainer}>
+                    <div className={styles.serviceOptionCard}>
+                      <h4 className={styles.serviceOptionCardTitle}>選擇一：現場安裝</h4>
+                      <p className={styles.serviceDetail}>
+                        安裝費 ({promo.tireSizeInch}吋)： <span className={styles.costHighlightSm}>{installCost}元/條</span>
+                      </p>
+                      <p className={styles.totalEstimate}>
+                        完工總價 (1條)： <span className={styles.totalPriceValue}>{installedPrice}元</span>
+                      </p>
+                    </div>
+
+                    <div className={styles.serviceOptionCard}>
+                      <h4 className={styles.serviceOptionCardTitle}>選擇二：寄送到府</h4>
+                      <p className={styles.serviceDetail}>
+                        運費： <span className={styles.costHighlightSm}>{SHIPPING_COST_PER_TIRE}元/條</span>
+                      </p>
+                      <p className={styles.totalEstimate}>
+                        寄送總價 (1條)： <span className={styles.totalPriceValue}>{shippedPrice}元</span>
+                      </p>
+                    </div>
                   </div>
-
-                  <div className={styles.serviceOptionCard}>
-                    <h4 className={styles.serviceOptionCardTitle}>選擇二：寄送到府</h4>
-                    <p className={styles.serviceDetail}>
-                      運費： <span className={styles.costHighlightSm}>{SHIPPING_COST_PER_TIRE}元/條</span>
-                    </p>
-                    <p className={styles.totalEstimate}>
-                      寄送總價 (1條)： <span className={styles.totalPriceValue}>{shippedPrice}元</span>
-                    </p>
-                  </div>
+                  
+                  <Link href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer" className={styles.orderButton}>
+                    立即訂購 (前往表單)
+                  </Link>
                 </div>
-                
-                <Link href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer" className={styles.orderButton}>
-                  立即訂購 (前往表單)
-                </Link>
               </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      ) : (
+        <p className={styles.noResultsMessage}>沒有找到符合條件的促銷輪胎。</p>
+      )}
       <p className={styles.footerNote}>
         **所有優惠價格與內容以現場報價為準，本公司保留活動修改及終止之權利。**
       </p>

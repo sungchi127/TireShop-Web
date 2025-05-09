@@ -18,20 +18,77 @@
   margin-bottom: 2.5rem;
 }
 
-/* General Service Options Info Section */
-.installationInfoSection { /* Re-purposed this class name */
-  background-color: #2a2a2a;
-  padding: 1.5rem 2rem;
+/* New Filter Styles */
+.filterContainer {
+  background-color: #2a2a2a; /* Similar to installationInfoSection */
+  padding: 1rem 1.5rem;
   border-radius: 8px;
   margin-bottom: 2.5rem;
   border: 1px solid #444;
 }
 
+.filterTitle {
+  color: #ffd700; /* Gold color for title */
+  font-size: 1.5rem; /* Slightly smaller than subHeading */
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.filterOptionsList {
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap */
+  justify-content: center; /* Center buttons */
+  gap: 0.75rem;
+  max-height: 150px; /* Limit height and make it scrollable if many options */
+  overflow-y: auto; /* Add vertical scroll if needed */
+  padding: 0.5rem; /* Padding inside the scrollable area */
+  border: 1px solid #383838; /* Border for the scrollable area */
+  border-radius: 6px;
+  background-color: #1e1e1e; /* Darker background for options list */
+}
+
+.filterOptionButton {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #555;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  min-width: 80px; /* Ensure buttons have a decent width */
+  text-align: center;
+}
+
+.filterOptionButton:hover {
+  background-color: #444;
+  color: #ffffff;
+}
+
+.activeFilter {
+  background-color: #ff3333 !important; /* Red for active filter */
+  color: #ffffff !important;
+  border-color: #cc0000 !important;
+  font-weight: bold;
+}
+
+/* End of New Filter Styles */
+
+/* General Service Options Info Section */
+.installationInfoSection { 
+  background-color: #2a2a2a;
+  padding: 1rem 1.5rem; /* Reduced padding */
+  border-radius: 8px;
+  margin-bottom: 2rem; /* Slightly reduced margin */
+  border: 1px solid #444;
+}
+
 .subHeading { /* Used for "服務選項說明" */
   color: #ff8c00;
-  font-size: 1.8rem;
+  font-size: 1.6rem; /* Reduced font size */
   margin-top: 0;
-  margin-bottom: 1.5rem; /* Increased bottom margin */
+  margin-bottom: 1rem; /* Reduced bottom margin */
   text-align: center;
 }
 
@@ -39,55 +96,56 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 1rem; /* Reduced gap */
 }
 
 .serviceOptionGlobal {
   background-color: #333;
-  padding: 1rem 1.5rem;
+  padding: 0.75rem 1rem; /* Reduced padding */
   border-radius: 6px;
   flex-basis: 45%;
-  min-width: 280px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  min-width: 260px; /* Slightly reduced min-width */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2); /* Smaller shadow */
 }
 
 .serviceOptionTitle {
-  color: #ffd700; /* Gold color for option titles */
-  font-size: 1.3rem;
+  color: #ffd700; 
+  font-size: 1.15rem; /* Reduced font size */
   margin-top: 0;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem; /* Reduced bottom margin */
   text-align: center;
 }
 
 .serviceOptionGlobal p {
   color: #f0f0f0;
-  font-size: 1rem;
-  line-height: 1.5;
-  margin-bottom: 0.5rem;
+  font-size: 0.9rem; /* Reduced font size */
+  line-height: 1.4;
+  margin-bottom: 0.3rem;
 }
 
-.installationListSmall { /* For the list inside general info */
+.installationListSmall { 
   list-style: none;
   padding-left: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .installationListSmall li {
   color: #e0e0e0;
-  font-size: 0.95rem;
-  margin-bottom: 0.3rem;
+  font-size: 0.85rem; /* Reduced font size */
+  margin-bottom: 0.2rem;
 }
 
-.infoNoteSmall { /* For small notes like "(價格不含安裝)" */
+.infoNoteSmall { 
   color: #aaa;
-  font-size: 0.85rem;
+  font-size: 0.8rem; /* Reduced font size */
   text-align: center;
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
 }
 
 .costHighlight {
   font-weight: bold;
   color: #ffdd88;
+  /* Font size will inherit from parent or can be set if needed */
 }
 
 .costHighlightSm { /* Smaller cost highlight for card details */
@@ -226,6 +284,15 @@
   color: #aaa;
   font-size: 0.9rem;
   font-style: italic;
+}
+
+/* Message for no results */
+.noResultsMessage {
+  text-align: center;
+  color: #ffc107; /* Yellow/amber color for info */
+  font-size: 1.2rem;
+  padding: 2rem 0;
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 768px) {
