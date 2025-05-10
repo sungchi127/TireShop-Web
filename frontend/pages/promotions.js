@@ -212,6 +212,7 @@ const PromotionsPage = () => {
               運費：<span className={styles.costHighlight}>{SHIPPING_COST_PER_TIRE}元/條</span>
             </p>
             <p className={styles.infoNoteSmall}>(價格不含安裝)</p>
+            <p className={`${styles.infoNoteSmall} ${styles.pickupNote}`}>亦歡迎填寫表單預約後來店自取</p>
           </div>
         </div>
       </div>

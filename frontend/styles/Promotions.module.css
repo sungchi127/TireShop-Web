@@ -131,8 +131,8 @@
 
 .installationListSmall li {
   color: #e0e0e0;
-  font-size: 0.85rem; /* Reduced font size */
-  margin-bottom: 0.2rem;
+  font-size: 1rem; /* Increased from 0.85rem */
+  margin-bottom: 0.3rem; /* Adjusted margin for better spacing */
 }
 
 .infoNoteSmall { 
@@ -142,10 +142,18 @@
   margin-top: 0.3rem;
 }
 
+/* Style for the new pickup note, can be similar to infoNoteSmall or customized */
+.pickupNote {
+  /* Inherits from infoNoteSmall if used together, or define specific styles here */
+  /* For example, if you want it slightly different: */
+  /* color: #bada55; */ 
+  /* font-weight: bold; */
+}
+
 .costHighlight {
   font-weight: bold;
   color: #ffdd88;
-  /* Font size will inherit from parent or can be set if needed */
+  font-size: 1.1rem; /* Added explicit font-size, adjust as needed */
 }
 
 .costHighlightSm { /* Smaller cost highlight for card details */
@@ -199,12 +207,13 @@
   font-size: 1.1rem;
   margin-bottom: 1.25rem; /* Increased margin */
   line-height: 1.5;
+  text-align: center; /* Add this line to center the tire price */
 }
 
 .priceValue { /* For tire price itself */
   font-weight: bold;
   color: #7fffd4;
-  font-size: 1.2rem;
+  font-size: 1.5rem; /* Increased from 1.2rem */
 }
 
 /* Container for the two service options within a card */
