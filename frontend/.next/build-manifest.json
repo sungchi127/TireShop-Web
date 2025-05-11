@@ -1,42 +1,98 @@
 {
   "polyfillFiles": [
-    "static/chunks/polyfills.js"
+    "static/chunks/polyfills-42372ed130431b0a.js"
   ],
-  "devFiles": [
-    "static/chunks/react-refresh.js"
-  ],
+  "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/development/_buildManifest.js",
-    "static/development/_ssgManifest.js"
+    "static/0KieYaeet-Mp3t7yU4mnK/_buildManifest.js",
+    "static/0KieYaeet-Mp3t7yU4mnK/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "rootMainFilesTree": {},
   "pages": {
+    "/": [
+      "static/chunks/webpack-713efe7527c05f27.js",
+      "static/chunks/framework-2f335d22a7318891.js",
+      "static/chunks/main-4c23680d4b230a3e.js",
+      "static/css/92c0426a66540251.css",
+      "static/chunks/pages/index-d07caa0446bad9c5.js"
+    ],
     "/_app": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/_app.js"
+      "static/chunks/webpack-713efe7527c05f27.js",
+      "static/chunks/framework-2f335d22a7318891.js",
+      "static/chunks/main-4c23680d4b230a3e.js",
+      "static/css/734f3e3a5131a110.css",
+      "static/chunks/pages/_app-e859fc3d00065f98.js"
     ],
     "/_error": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/_error.js"
+      "static/chunks/webpack-713efe7527c05f27.js",
+      "static/chunks/framework-2f335d22a7318891.js",
+      "static/chunks/main-4c23680d4b230a3e.js",
+      "static/chunks/pages/_error-b41dbd85229d9331.js"
     ],
     "/about": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/about.js"
+      "static/chunks/webpack-713efe7527c05f27.js",
+      "static/chunks/framework-2f335d22a7318891.js",
+      "static/chunks/main-4c23680d4b230a3e.js",
+      "static/css/7c9a76baf0a5911d.css",
+      "static/chunks/pages/about-7c8d96a8fcbc2dc6.js"
+    ],
+    "/admin/login": [
+      "static/chunks/webpack-713efe7527c05f27.js",
+      "static/chunks/framework-2f335d22a7318891.js",
+      "static/chunks/main-4c23680d4b230a3e.js",
+      "static/css/bc7c1e33fe12d3cf.css",
+      "static/chunks/pages/admin/login-b3d19ae3a7c26cdc.js"
+    ],
+    "/admin/orders": [
+      "static/chunks/webpack-713efe7527c05f27.js",
+      "static/chunks/framework-2f335d22a7318891.js",
+      "static/chunks/main-4c23680d4b230a3e.js",
+      "static/css/50b830e03775e8b6.css",
+      "static/chunks/pages/admin/orders-3440dc0146d690b8.js"
+    ],
+    "/find-tires": [
+      "static/chunks/webpack-713efe7527c05f27.js",
+      "static/chunks/framework-2f335d22a7318891.js",
+      "static/chunks/main-4c23680d4b230a3e.js",
+      "static/css/dfb5ddb6854ac3aa.css",
+      "static/chunks/pages/find-tires-80baa28063bb11ad.js"
     ],
     "/promotions": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/promotions.js"
+      "static/chunks/webpack-713efe7527c05f27.js",
+      "static/chunks/framework-2f335d22a7318891.js",
+      "static/chunks/main-4c23680d4b230a3e.js",
+      "static/css/7461f1d18014766c.css",
+      "static/chunks/pages/promotions-96f1dcdf419b55ae.js"
     ],
     "/repair-services": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/repair-services.js"
+      "static/chunks/webpack-713efe7527c05f27.js",
+      "static/chunks/framework-2f335d22a7318891.js",
+      "static/chunks/main-4c23680d4b230a3e.js",
+      "static/css/2b8d843f818bb20e.css",
+      "static/chunks/pages/repair-services-e2b278c3e334c03d.js"
+    ],
+    "/tire-knowledge": [
+      "static/chunks/webpack-713efe7527c05f27.js",
+      "static/chunks/framework-2f335d22a7318891.js",
+      "static/chunks/main-4c23680d4b230a3e.js",
+      "static/css/14ac01d039ddab32.css",
+      "static/chunks/pages/tire-knowledge-1b5c8e874165b907.js"
+    ],
+    "/tire-order": [
+      "static/chunks/webpack-713efe7527c05f27.js",
+      "static/chunks/framework-2f335d22a7318891.js",
+      "static/chunks/main-4c23680d4b230a3e.js",
+      "static/css/8c4bbbf5683432e4.css",
+      "static/chunks/pages/tire-order-e5115d6001d3dd60.js"
+    ],
+    "/tire-series": [
+      "static/chunks/webpack-713efe7527c05f27.js",
+      "static/chunks/framework-2f335d22a7318891.js",
+      "static/chunks/main-4c23680d4b230a3e.js",
+      "static/css/d472ca4ae6bba872.css",
+      "static/chunks/pages/tire-series-4da6cedc52c49a54.js"
     ]
   },
   "ampFirstPages": []

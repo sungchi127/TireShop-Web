@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.kuang-i.com
+
+# Sitemaps
+Sitemap: https://www.kuang-i.com/sitemap.xml

@@ -1,8 +1,16 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
+  "/about": "pages/about.html",
+  "/admin/login": "pages/admin/login.html",
+  "/admin/orders": "pages/admin/orders.html",
+  "/find-tires": "pages/find-tires.html",
+  "/": "pages/index.html",
+  "/promotions": "pages/promotions.html",
+  "/repair-services": "pages/repair-services.html",
+  "/tire-knowledge": "pages/tire-knowledge.html",
+  "/tire-order": "pages/tire-order.html",
+  "/tire-series": "pages/tire-series.html",
   "/_document": "pages/_document.js",
-  "/promotions": "pages/promotions.js",
-  "/about": "pages/about.js",
-  "/repair-services": "pages/repair-services.js"
+  "/404": "pages/404.html"
 }
