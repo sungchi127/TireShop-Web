@@ -3,3 +3,8 @@ backend/.env
 todolist.md
 BUY
 *.log
+.next
+frontend/.next
+dist
+out
+build
